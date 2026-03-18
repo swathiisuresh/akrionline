@@ -1,0 +1,62 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { 
+  HiOutlineHome, 
+  HiOutlineTruck, 
+  HiOutlineClock, 
+  HiOutlineCircleStack, 
+  HiOutlineUser, 
+  HiOutlineArrowRightOnRectangle 
+} from 'react-icons/hi2';
+
+const Sidebar = () => {
+  const menuItems = [
+    { name: 'Terminal Home', icon: <HiOutlineHome />, active: true },
+    { name: 'Schedule Pickup', icon: <HiOutlineTruck />, active: false },
+    { name: 'Pickup History', icon: <HiOutlineClock />, active: false },
+    { name: 'Material Ledger', icon: <HiOutlineCircleStack />, active: false },
+    { name: 'Account Profile', icon: <HiOutlineUser />, active: false },
+  ];
+
+  return (
+    <aside className="w-72 h-screen sticky top-0 bg-white dark:bg-[#050505] border-r border-gray-100 dark:border-white/5 flex flex-col p-8 z-50">
+      {/* Brand */}
+      <div className="mb-12">
+        <div className="flex items-center gap-2 mb-1">
+          <div className="w-3 h-3 bg-[#2D6A4F] rounded-full animate-pulse" />
+          <h1 className="text-xl font-serif italic tracking-tighter dark:text-white">AkriOnline</h1>
+        </div>
+        <p className="text-[9px] font-black uppercase tracking-[0.3em] text-gray-400">User_Control_Panel</p>
+      </div>
+
+      {/* Navigation */}
+      <nav className="flex-1 space-y-2">
+        {menuItems.map((item) => (
+          <button
+            key={item.name}
+            className={`w-full flex items-center gap-4 px-4 py-3.5 rounded-2xl text-[11px] font-black uppercase tracking-widest transition-all group ${
+              item.active 
+              ? 'bg-[#2D6A4F] text-white shadow-lg shadow-[#2D6A4F]/20' 
+              : 'text-gray-500 hover:bg-gray-50 dark:hover:bg-white/5'
+            }`}
+          >
+            <span className={`text-lg ${item.active ? 'text-white' : 'text-gray-400 group-hover:text-[#2D6A4F]'}`}>
+              {item.icon}
+            </span>
+            {item.name}
+          </button>
+        ))}
+      </nav>
+
+      {/* Logout */}
+      <div className="pt-6 border-t border-gray-100 dark:border-white/5">
+        <button className="w-full flex items-center gap-4 px-4 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 transition-all">
+          <HiOutlineArrowRightOnRectangle className="text-lg" />
+          Terminate Session
+        </button>
+      </div>
+    </aside>
+  );
+};
+
+export default Sidebar;
