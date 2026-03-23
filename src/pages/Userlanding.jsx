@@ -18,6 +18,8 @@ function Userlanding() {
         restDelta: 0.001
     });
 
+    
+
     const steps = [
         {
             number: "01",
@@ -89,7 +91,7 @@ function Userlanding() {
             icon: <MdOutlineHandshake />,
             title: "Works with HKS",
             desc: "The premium layer for high-value scrap that HKS doesn't individually weigh.",
-            highlight: true, // Special styling for Kerala Trust
+            highlight: true,
             type: "HKS"
         },
         {

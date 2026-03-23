@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Sidebar from '../components/Sidebar';
+import Sidebar from '../../components/Sidebar';
 import {
     HiOutlineSun,
     HiOutlineMoon,
@@ -11,9 +11,11 @@ import {
 } from 'react-icons/hi2';
 import { HiOutlineCloudDownload, HiOutlineArchive } from "react-icons/hi";
 import { HiOutlineScale } from 'react-icons/hi';
-import Footer from '../components/Footer';
+import Footer from '../../components/Footer';
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
+    const navigate = useNavigate();
     const [darkMode, setDarkMode] = useState(true);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -311,7 +313,7 @@ function Dashboard() {
                                                 <h5 className="text-3xl md:text-5xl font-serif text-white mb-4 md:mb-6 leading-[1.1]">Instant <br /> <span className="italic opacity-60">Pickup.</span></h5>
                                                 <p className="text-white/70 text-sm md:text-lg font-serif italic border-l border-white/20 pl-4 md:pl-6 max-w-xs">Skip the traditional queue. Verified agent arrives within <span className="text-white not-italic font-bold">60m</span>.</p>
                                             </div>
-                                            <button className="w-full py-5 md:py-6 bg-white text-[#2D6A4F] rounded-xl md:rounded-2xl font-black uppercase text-[10px] md:text-[11px] tracking-[0.3em] active:scale-95 transition-all">
+                                            <button onClick={() => navigate('/dashboard/instantpickup')} className="w-full py-5 md:py-6 bg-white text-[#2D6A4F] rounded-xl md:rounded-2xl font-black uppercase text-[10px] md:text-[11px] tracking-[0.3em] active:scale-95 transition-all">
                                                 Initialize Pickup <HiOutlineBolt className="inline ml-2" />
                                             </button>
                                         </div>
