@@ -2,8 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { HiOutlineArrowRight, HiOutlineGlobeAlt, HiOutlinePhone } from 'react-icons/hi2';
 import Navbar from '../../components/Navbar';
+import { useNavigate } from 'react-router-dom';
+
 
 function Login() {
+    const navigate=useNavigate();
     return (
         <div className="h-screen bg-white dark:bg-[#080808] selection:bg-[#2D6A4F] selection:text-white overflow-hidden transition-colors duration-500">
             <div className="absolute top-0 left-0 w-full z-50">
@@ -88,7 +91,9 @@ function Login() {
 
                             {/* Button Section */}
                             <div className="space-y-4 pt-2">
-                                <button className="group relative w-full overflow-hidden bg-[#1A1A1A] dark:bg-white py-5 px-8 rounded-lg transition-all duration-500 hover:bg-[#2D6A4F] dark:hover:bg-[#2D6A4F] active:scale-[0.98]">
+                                <button 
+                                onClick={() => navigate('/verifyotp')}
+                                className="group relative w-full overflow-hidden bg-[#1A1A1A] dark:bg-white py-5 px-8 rounded-lg transition-all duration-500 hover:bg-[#2D6A4F] dark:hover:bg-[#2D6A4F] active:scale-[0.98]">
                                     <div className="relative z-10 flex items-center justify-center gap-3 text-[9px] font-black uppercase tracking-[0.3em] text-white dark:text-[#080808] group-hover:text-white transition-colors">
                                         Send OTP
                                         <HiOutlineArrowRight className="text-base group-hover:translate-x-1 transition-transform" />
