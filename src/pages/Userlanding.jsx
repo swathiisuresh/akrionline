@@ -8,7 +8,6 @@ import Footer from '../components/Footer';
 import { Link } from 'react-router-dom'
 
 function Userlanding() {
-    const [darkMode, setDarkMode] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     
     const { scrollYProgress } = useScroll();
@@ -102,14 +101,6 @@ function Userlanding() {
             type: "ReStore"
         }
     ];
-
-    useEffect(() => {
-        if (darkMode) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    }, [darkMode]);
 
     const scrollToWaitlist = () => {
         const section = document.getElementById('waitlist-section');

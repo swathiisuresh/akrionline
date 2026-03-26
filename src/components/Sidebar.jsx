@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { 
   HiOutlineHome, 
   HiOutlineTruck, 
@@ -10,12 +11,15 @@ import {
 } from 'react-icons/hi2';
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const menuItems = [
-    { name: 'Terminal Home', icon: <HiOutlineHome />, active: true },
-    { name: 'Schedule Pickup', icon: <HiOutlineTruck />, active: false },
-    { name: 'Pickup History', icon: <HiOutlineClock />, active: false },
-    { name: 'Material Ledger', icon: <HiOutlineCircleStack />, active: false },
-    { name: 'Account Profile', icon: <HiOutlineUser />, active: false },
+    { name: 'Terminal Home', icon: <HiOutlineHome />, path: '/dashboard' },
+    { name: 'Schedule Pickup', icon: <HiOutlineTruck />, path: '/dashboard/pickup' },
+    { name: 'Pickup History', icon: <HiOutlineClock />, path: '/dashboard/history' },
+    { name: 'Material Ledger', icon: <HiOutlineCircleStack />, path: '/dashboard/ledger' },
+    { name: 'Account Profile', icon: <HiOutlineUser />, path: '/dashboard/profile' },
   ];
 
   return (
@@ -31,21 +35,25 @@ const Sidebar = () => {
 
       {/* Navigation */}
       <nav className="flex-1 space-y-2">
-        {menuItems.map((item) => (
-          <button
-            key={item.name}
-            className={`w-full flex items-center gap-4 px-4 py-3.5 rounded-2xl text-[11px] font-black uppercase tracking-widest transition-all group ${
-              item.active 
-              ? 'bg-[#2D6A4F] text-white shadow-lg shadow-[#2D6A4F]/20' 
-              : 'text-gray-500 hover:bg-gray-50 dark:hover:bg-white/5'
-            }`}
-          >
-            <span className={`text-lg ${item.active ? 'text-white' : 'text-gray-400 group-hover:text-[#2D6A4F]'}`}>
-              {item.icon}
-            </span>
-            {item.name}
-          </button>
-        ))}
+        {menuItems.map((item) => {
+          const isActive = location.pathname === item.path || (item.path === '/dashboard' && location.pathname === '/dashboard');
+          return (
+            <button
+              key={item.name}
+              onClick={() => navigate(item.path)}
+              className={`w-full flex items-center gap-4 px-4 py-3.5 rounded-2xl text-[11px] font-black uppercase tracking-widest transition-all group ${
+                isActive 
+                ? 'bg-[#2D6A4F] text-white shadow-lg shadow-[#2D6A4F]/20' 
+                : 'text-gray-500 hover:bg-gray-50 dark:hover:bg-white/5'
+              }`}
+            >
+              <span className={`text-lg ${isActive ? 'text-white' : 'text-gray-400 group-hover:text-[#2D6A4F]'}`}>
+                {item.icon}
+              </span>
+              {item.name}
+            </button>
+          );
+        })}
       </nav>
 
       {/* Logout */}

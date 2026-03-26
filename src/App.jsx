@@ -6,6 +6,8 @@ import { Routes, Route } from 'react-router-dom'
 import Dashboard from './pages/user/Dashboard'
 import Instantpickup from './pages/user/Instantpickup'
 import OtpVerification from './pages/user/OtpVerification'
+import PickupPage from './pages/user/PickupPage'
+import PickupLayout from './components/user/PickupLayout'
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path='/verifyotp' element={<OtpVerification/>}/>
       <Route path="/dashboard" element={<Dashboard/>} />
+      <Route path='/dashboard/pickup' element={<PickupLayout/>} />
       <Route path="/dashboard/instantpickup" element={<Instantpickup/>} />
     </Routes>
   )

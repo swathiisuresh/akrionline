@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Sidebar from '../../components/Sidebar';
+import { useTheme } from '../../context/ThemeContext';
 import {
     HiOutlineSun,
     HiOutlineMoon,
@@ -16,19 +17,11 @@ import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
     const navigate = useNavigate();
-    const [darkMode, setDarkMode] = useState(true);
+    const { isDark, toggleTheme } = useTheme();
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-    useEffect(() => {
-        if (darkMode) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    }, [darkMode]);
-
     return (
-        <div>
+        <div className={isDark ? 'dark' : ''}>
         <div className="flex h-screen overflow-hidden bg-[#F4F7F4] dark:bg-[#0A0C0A]">
             {/* Sidebar*/}
             {isSidebarOpen && (
@@ -72,10 +65,10 @@ function Dashboard() {
                         <div className="flex items-center gap-3 md:gap-8">
                             <div className="flex items-center gap-2 md:gap-3">
                                 <button
-                                    onClick={() => setDarkMode(!darkMode)}
+                                    onClick={() => toggleTheme()}
                                     className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-xl bg-white dark:bg-white/5 border border-black/[0.03] dark:border-white/10 dark:text-white"
                                 >
-                                    {darkMode ? <HiOutlineMoon size={18} /> : <HiOutlineSun size={18} />}
+                                    {isDark ? <HiOutlineMoon size={18} /> : <HiOutlineSun size={18} />}
                                 </button>
 
                                 <div className="hidden xs:flex items-center gap-3 bg-white dark:bg-white/5 border border-black/[0.03] dark:border-white/10 p-1 md:p-1.5 md:pr-5 rounded-2xl group">
@@ -158,7 +151,7 @@ function Dashboard() {
                                                         "You are 8kg away from achieving <span className="text-green-400 not-italic font-bold">Western Ghats Hero</span> status."
                                                     </p>
                                                 </div>
-                                                <button className="w-full py-4 md:py-5 bg-[#2D6A4F] text-white rounded-xl md:rounded-2xl font-black uppercase text-[10px] md:text-[11px] tracking-[0.2em] transition-all active:scale-95">
+                                                <button onClick={()=>navigate('/dashboard/pickup')} className="w-full py-4 md:py-5 bg-[#2D6A4F] text-white rounded-xl md:rounded-2xl font-black uppercase text-[10px] md:text-[11px] tracking-[0.2em] transition-all active:scale-95">
                                                     Schedule Pickup
                                                 </button>
                                             </div>
