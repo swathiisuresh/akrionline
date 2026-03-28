@@ -8,6 +8,7 @@ import Instantpickup from './pages/user/Instantpickup'
 import OtpVerification from './pages/user/OtpVerification'
 import PickupLayout from './components/user/PickupLayout'
 import ProfileSetup from './pages/user/ProfileSetup'
+import MyPickups from './pages/user/MyPickups'
 
 function App() {
   return (
@@ -19,7 +20,9 @@ function App() {
       <Route path="/dashboard" element={<Dashboard/>} />
       <Route path='/dashboard/pickup' element={<PickupLayout/>} />
       <Route path="/dashboard/instantpickup" element={<Instantpickup/>} />
+      <Route path='/dashboard/mypickups' element={<MyPickups/>} />
       <Route path="/profilesetup" element={<ProfileSetup/>} />
+
 
     </Routes>
   )

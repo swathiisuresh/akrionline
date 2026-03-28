@@ -260,7 +260,7 @@ const InstantPickup = () => {
                 </main>
             </div>
 
-            {/* MAP MODAL (STEP 2 Logic) */}
+            {/* MAP MODAL */}
             <AnimatePresence>
                 {isMapOpen && isLoaded && (
                     <motion.div 
