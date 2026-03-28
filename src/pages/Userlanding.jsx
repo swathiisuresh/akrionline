@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useSpring, useInView, animate } from 'framer-motion';
+import { useTheme } from '../context/ThemeContext';
 import { HiArrowRight, HiOutlineDeviceMobile, HiOutlineUserGroup, HiOutlineScale, HiOutlineCash, HiOutlineTrash, HiOutlineDocumentText, HiOutlineArchive, HiOutlineCube, HiOutlineLightningBolt, HiOutlineSparkles, HiOutlineDesktopComputer, HiOutlineBookOpen, HiOutlineShieldCheck, HiOutlineCurrencyRupee, HiOutlineCloudDownload, HiOutlineChartBar } from 'react-icons/hi';
 import { MdOutlineHandshake } from "react-icons/md";
 import { HiArrowPath } from "react-icons/hi2";
@@ -8,6 +9,7 @@ import Footer from '../components/Footer';
 import { Link } from 'react-router-dom'
 
 function Userlanding() {
+    const { isDark } = useTheme();
     const [submitted, setSubmitted] = useState(false);
     
     const { scrollYProgress } = useScroll();
@@ -141,6 +143,7 @@ function Userlanding() {
     ];
 
     return (
+        <div className={isDark ? 'dark' : ''}>
         <div className="transition-colors duration-500 bg-[#F4F7F4] dark:bg-[#0A0C0A]">
             <Navbar />
             {/* Hero Section */}
@@ -651,6 +654,7 @@ function Userlanding() {
 
             <Footer/>
 
+        </div>
         </div>
     )
 }

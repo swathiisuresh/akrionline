@@ -3,7 +3,10 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-    const [isDark, setIsDark] = useState(false);
+    const [isDark, setIsDark] = useState(() => {
+        const saved = localStorage.getItem('theme');
+        return saved ? JSON.parse(saved) : false;
+    });
 
     useEffect(() => {
         const root = window.document.documentElement;
@@ -12,6 +15,7 @@ export const ThemeProvider = ({ children }) => {
         } else {
             root.classList.remove('dark');
         }
+        localStorage.setItem('theme', JSON.stringify(isDark));
     }, [isDark]);
 
     const toggleTheme = () => {

@@ -9,6 +9,7 @@ function ProfileSetup({ onNext }) {
     const [focused, setFocused] = useState(null);
 
     return (
+        <div className={isDark ? 'dark' : ''}>
         <div className={`min-h-screen md:min-h-[700px] grid grid-cols-1 md:grid-cols-12 ${isDark ? 'bg-[#050505]' : 'bg-white'} rounded-none md:rounded-[3rem] overflow-hidden border-0 md:border ${isDark ? 'border-white/5' : 'border-gray-100'} shadow-0 md:shadow-2xl ${isDark ? 'text-white' : 'text-gray-900'}`}>
             
             {/* LEFT PANEL: THE STATUS LOG */}
@@ -115,6 +116,7 @@ function ProfileSetup({ onNext }) {
                     Authorize <HiOutlineArrowRight className="text-sm md:text-base" />
                 </motion.button>
             </div>
+        </div>
         </div>
     );
 }

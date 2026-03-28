@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../../context/ThemeContext';
 import { HiOutlineShieldCheck, HiOutlineArrowRight, HiOutlineArrowLeft } from 'react-icons/hi2';
 import Navbar from '../../components/Navbar';
 
 function OtpVerification() {
     const navigate = useNavigate();
+    const { isDark } = useTheme();
     const [otp, setOtp] = useState(['', '', '', '', '']);
     const [timer, setTimer] = useState(30);
 
@@ -30,6 +32,7 @@ function OtpVerification() {
     };
 
     return (
+        <div className={isDark ? 'dark' : ''}>
         <div className="h-screen bg-white dark:bg-[#080808] selection:bg-[#2D6A4F] overflow-hidden transition-colors duration-500">
             <div className="absolute top-0 left-0 w-full z-50">
                 <Navbar />
@@ -132,6 +135,7 @@ function OtpVerification() {
                     </motion.div>
                 </div>
             </section>
+        </div>
         </div>
     );
 }
