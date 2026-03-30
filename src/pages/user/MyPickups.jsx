@@ -260,7 +260,18 @@ const MyPickups = () => {
                             </div>
 
                             {/* FOOTER ACTION */}
-                            <div className="p-4 sm:p-6 md:p-10 bg-gray-50 dark:bg-black/20">
+                            <div className="p-4 sm:p-6 md:p-10 bg-gray-50 dark:bg-black/20 space-y-3 sm:space-y-4">
+                                {selectedPickup.status === 'Scheduled' && (
+                                    <button 
+                                        className="w-full py-3 sm:py-4 md:py-6 bg-red-500 hover:bg-red-600 text-white rounded-lg sm:rounded-lg md:rounded-[2rem] font-black text-[8px] sm:text-[9px] md:text-[10px] uppercase tracking-widest transition-all"
+                                        onClick={() => {
+                                            alert('Pickup cancelled successfully');
+                                            setSelectedPickup(null);
+                                        }}
+                                    >
+                                        Cancel_Pickup
+                                    </button>
+                                )}
                                 <button 
                                     className="w-full py-3 sm:py-4 md:py-6 bg-[#1A1A1A] dark:bg-white text-white dark:text-black rounded-lg sm:rounded-lg md:rounded-[2rem] font-black text-[8px] sm:text-[9px] md:text-[10px] uppercase tracking-widest"
                                     onClick={() => setSelectedPickup(null)}

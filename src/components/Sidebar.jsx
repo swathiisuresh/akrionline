@@ -10,25 +10,30 @@ import {
   HiOutlineArrowRightOnRectangle 
 } from 'react-icons/hi2';
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  const handleNavigate = (path) => {
+    navigate(path);
+    if (onClose) onClose();
+  };
 
   const menuItems = [
     { name: 'Terminal Home', icon: <HiOutlineHome />, path: '/dashboard' },
     { name: 'Schedule Pickup', icon: <HiOutlineTruck />, path: '/dashboard/pickup' },
-    { name: 'Pickup History', icon: <HiOutlineClock />, path: '/dashboard/history' },
-    { name: 'Material Ledger', icon: <HiOutlineCircleStack />, path: '/dashboard/ledger' },
+    { name: 'Pickup History', icon: <HiOutlineClock />, path: '/dashboard/mypickups' },
+    // { name: 'Material Ledger', icon: <HiOutlineCircleStack />, path: '/dashboard/ledger' },
     { name: 'Account Profile', icon: <HiOutlineUser />, path: '/dashboard/profile' },
   ];
 
   return (
-    <aside className="w-72 h-screen sticky top-0 bg-white dark:bg-[#050505] border-r border-gray-100 dark:border-white/5 flex flex-col p-8 z-50">
+    <aside className="w-72 h-screen sticky top-0 lg:sticky lg:top-0 bg-white dark:bg-[#050505] border-r border-gray-100 dark:border-white/5 flex flex-col p-6 md:p-8 z-50">
       {/* Brand */}
-      <div className="mb-12">
+      <div className="mb-8 md:mb-12">
         <div className="flex items-center gap-2 mb-1">
           <div className="w-3 h-3 bg-[#2D6A4F] rounded-full animate-pulse" />
-          <h1 className="text-xl font-serif italic tracking-tighter dark:text-white">AkriOnline</h1>
+          <h1 className="text-lg md:text-xl font-serif italic tracking-tighter dark:text-white">AkriOnline</h1>
         </div>
         <p className="text-[9px] font-black uppercase tracking-[0.3em] text-gray-400">User_Control_Panel</p>
       </div>
@@ -40,7 +45,7 @@ const Sidebar = () => {
           return (
             <button
               key={item.name}
-              onClick={() => navigate(item.path)}
+              onClick={() => handleNavigate(item.path)}
               className={`w-full flex items-center gap-4 px-4 py-3.5 rounded-2xl text-[11px] font-black uppercase tracking-widest transition-all group ${
                 isActive 
                 ? 'bg-[#2D6A4F] text-white shadow-lg shadow-[#2D6A4F]/20' 
