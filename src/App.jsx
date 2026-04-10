@@ -11,6 +11,11 @@ import ProfileSetup from './pages/user/ProfileSetup'
 import MyPickups from './pages/user/MyPickups'
 import Profile from './pages/user/Profile'
 import Waitlist from './pages/user/Waitlist'
+import RepLogin from './pages/rep/Replogin'
+import TodaysJobs from './pages/rep/TodaysJobs'
+import WeighingScreen from './pages/rep/WeighingScreen'
+import PriceDiscoveryScreen from './pages/rep/PriceDiscoveryScreen'
+import PayoutConfirmScreen from './pages/rep/PayoutConfirmScreen'
 
 function App() {
   return (
@@ -27,7 +32,11 @@ function App() {
       <Route path="/profilesetup" element={<ProfileSetup/>} />
       <Route path="/waitlist" element={<Waitlist/>} />
 
-
+      <Route path="/replogin" element={<RepLogin/>} />
+      <Route path='/todaysjob' element={<TodaysJobs/>}/>
+      <Route path='/weighing-screen' element={<WeighingScreen/>}/>
+      <Route path='/pricediscovery' element={<PriceDiscoveryScreen/>}/>
+      <Route path='/payoutconfirm' element={<PayoutConfirmScreen/>}/>
     </Routes>
   )
 }

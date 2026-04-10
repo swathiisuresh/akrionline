@@ -18,7 +18,7 @@ import {
 } from 'react-icons/hi2';
 import Sidebar from '../../components/Sidebar';
 
-// Mock Data - In a real app, this comes from your Node.js/MongoDB backend
+// Mock Data - In a real app, this comes from your backend
 const MOCK_PICKUPS = [
     {
         id: "AKRI-9920-X",
